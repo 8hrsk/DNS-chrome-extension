@@ -1,3 +1,5 @@
+import { Requests } from './src/Requests.js';
+
 const TARGET_PAGE = "mow2.sale.partner.ru";
 
 const handleSwitch = async () => {

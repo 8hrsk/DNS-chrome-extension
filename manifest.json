@@ -3,12 +3,17 @@
 
     "name": "Page Switcher",
 
-    "version": "1.0.0",
+    "version": "1.0.1",
 
-    "description": "Simple Chrome extension to quickly switch between ocnsultant and cassier modes in the DNS web app.",
+    "description": "DNS Shop extension that improves efficiency.",
 
     "permissions": [
-        "tabs"
+        "tabs",
+        "cookies"
+    ],
+
+    "host_permissions": [
+        "*://*.partner.ru/"
     ],
 
     "background": {
@@ -19,9 +24,9 @@
         "toggle-page": {
             "suggested_key": {
                 "default": "Alt+Shift+S",
-	"mac": "Alt+Shift+S"
-        },
+	            "mac": "Alt+Shift+S"
+            },
         "description": "Switch page."
+        }
     }
-}
 }

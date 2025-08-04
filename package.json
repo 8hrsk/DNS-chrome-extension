@@ -1,0 +1,13 @@
+{
+  "name": "dns-chrome-extension-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "type": "module",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "8hoursking",
+  "license": "ISC"
+}

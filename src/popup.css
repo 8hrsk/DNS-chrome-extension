@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {}
+
+footer {}
+
+button {
+    background-color: coral;
+}
+
+button:hover {
+    transition: all 1s linear;
+}
+
+.woblers {}
+
+.print {}
+
+.author {}
