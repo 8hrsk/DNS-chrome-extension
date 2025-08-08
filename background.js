@@ -1,9 +1,20 @@
-import { Requests } from './src/Requests.js';
+import CookieParser from './src/Utils/CookieParser.js';
 
 const TARGET_PAGE = "mow2.sale.partner.ru";
 
+const getCookies = async () => {
+  const cookieParser = new CookieParser();
+  await cookieParser.getCookies((cookies) => {
+    console.log(cookies);
+  });
+}; getCookies();
+
+const getCookiesInterval = setInterval(() => {
+  getCookies();
+}, 5000);
+
 const handleSwitch = async () => {
-  const [tab] = await chrome.tabs.query({
+  const [ tab ] = await chrome.tabs.query({
     active: true,
     currentWindow: true
   });
@@ -12,12 +23,18 @@ const handleSwitch = async () => {
   try {
     const currentUrl = new URL(tab.url);
     if (currentUrl.hostname !== TARGET_PAGE) return;
+
     let newPath;
+    
     if (currentUrl.pathname.startsWith('/consultant')) {
       newPath = '/cashier';
-    } else if (currentUrl.pathname.startsWith('/cashier')) {
+    }
+
+    if (currentUrl.pathname.startsWith('/cashier')) {
       newPath = '/consultant';
-    } else {
+    }
+
+    if (!newPath) {
       return;
     }
     
@@ -28,7 +45,12 @@ const handleSwitch = async () => {
     });
   } catch (error) {
     console.error('ERROR: ', error);
+    throw new Error(error);
   }
+}
+
+const printCheck = async () => {
+  console.log('check');
 }
 
 chrome.commands.onCommand.addListener((command) => {

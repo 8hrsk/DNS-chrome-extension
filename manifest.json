@@ -17,16 +17,24 @@
     ],
 
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "type": "module"
     },
 
     "commands": {
         "toggle-page": {
             "suggested_key": {
-                "default": "Alt+Shift+S",
-	            "mac": "Alt+Shift+S"
+                "default": "Alt+Shift+S"
             },
         "description": "Switch page."
         }
-    }
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["http://*.partner.ru/cashier/pay"],
+            "js": ["./src/catchCheckPrintAction.js"],
+            "run_at": "document_start"
+        }
+    ]
 }
